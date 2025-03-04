@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathGenieRK - Unlock Math Magic</title>
+    <link rel="stylesheet" href="/materialPage/materialpage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="title">
+            <h1 class="title-mainpart">MathGenieRK</h1>
+            <p class="title-subpart">Unlock Math Magic</p>
+        </div>
+        <div class="welcome-user" id="welcomeUser" style="display: none;">
+            Welcome, <span id="username">User</span>!
+        </div>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+    
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="close-btn">×</button>
+        <nav class="sidebar-menu">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/materials/geometry" class="menu-item" data-category="Geometry">Geometry</a></li>
+                <li><a href="/materials/arithmetic" class="menu-item" data-category="Arithmetic">Arithmetic</a></li>
+                <li><a href="/materials/algebra" class="menu-item" data-category="Algebra">Algebra</a></li>
+                <li><a href="/materials/advanced" class="menu-item" data-category="Advanced">Advanced</a></li>
+                <li><a href="/materials/worksheets" class="menu-item" data-category="Worksheets">Worksheets</a></li>
+                <li><a href="/materials/funactivities" class="menu-item" data-category="Fun Activities">Fun Activities</a></li>
+                <li><a href="/materials">Download</a></li>
+                <li><a href="/login">Log In</a></li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <!-- Submenu that will be dynamically populated -->
+    <div id="submenu" class="submenu"></div>
+    <main>
+        <section class="content fade-in-scroll">
+            <ul class="horizontal-menu">
+                <li><a href="/materials/geometry">Geometry</a></li>
+                <li><a href="/materials/arithmetic">Arithmetic</a></li>
+                <li><a href="/materials/algebra">Algebra</a></li>
+                <li><a href="/materials/advanced">Advanced</a></li>
+                <li><a href="/materials/worksheets">Worksheets</a></li>
+                <li><a href="/materials/funactivities">Fun Activities</a></li>
+                <li><a href="/materials">Download</a></li>
+            </ul>
+        </section>
+        
+        <div class="video-container" id="video-container" style="display: none;">
+            <iframe 
+                id="video-viewer"
+                src="" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen id="video-player">
+            </iframe>
+        </div>
+
+        <!-- PDF Loader and Data Table -->
+        <div class="pdf-loader" id="pdf-loader" style="display: none;">
+            <p id="loader-label">Choose a chapter to view</p>
+            <button id="fullscreen-button" style="display:none;">Fullscreen</button>
+            <iframe id="pdf-viewer" src="" frameborder="0" style="display: none; width: 100%; height: 600px;"></iframe>
+        </div>
+
+        <div class="pdf-description-container" id="pdf-description-container">
+            <h2>Description</h2>
+            <p id="pdf-description"></p>
+        </div>
+        <div class="reaction-section-container", id="reaction-section-container">
+            <div></div>
+        </div>
+        <div class="comment-section-container", id="comment-section-container">
+            <div></div>
+        </div>
+        <h2 style="display: flex; flex-direction: column; align-items: center; justify-content: center;">Chapters</h2>
+
+        <div class="table-container" id="table-container" style="display: none;">
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>Filename</th>
+                        <th>Chapter</th>
+                    </tr>
+                </thead>
+                <tbody id="content-table-body">
+                    <!-- Rows will be dynamically populated -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+
+   <section class="contact-form-section">
+       <div class="contact-form-container">
+            <h2>Have any questions?</h2>
+            <h2>Contact Us</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                 <div class="form-group">
+                    <button type="submit" class="btn" >Send Message</button>
+                </div>
+            </form>
+            <div class="success-message" id="success-message" style="display: none;">
+                <p>Your message has been sent successfully!</p>
+            </div>
+       </div>
+   </section>
+
+
+    <footer>
+        <p>© 2024 MathGenieRK. All rights reserved.</p>
+    </footer>
+
+    <script src="/materialPage/materialpage.js"></script>
+</body>
+</html>

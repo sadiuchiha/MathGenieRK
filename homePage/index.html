@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathGenieRK - Unlock Math Magic</title>
+    <link rel="stylesheet" href="/homePage/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="title">
+            <h1 class="title-mainpart">MathGenieRK</h1>
+            <p class="title-subpart">Unlock Math Magic</p>
+        </div>
+        <div class="welcome-user" id="welcomeUser" style="display: none;">
+            Welcome, <span id="username">User</span>!
+        </div>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+    
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="close-btn">&times;</button>
+        <nav class="sidebar-menu">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/materials/geometry" class="menu-item" data-category="Geometry">Geometry</a></li>
+                <li><a href="/materials/arithmetic" class="menu-item" data-category="Arithmetic">Arithmetic</a></li>
+                <li><a href="/materials/algebra" class="menu-item" data-category="Algebra">Algebra</a></li>
+                <li><a href="/materials/advancedMathematics" class="menu-item" data-category="Advanced Mathematics">Advanced Mathematics</a></li>
+                <li><a href="/materials/worksheets" class="menu-item" data-category="Worksheets">Worksheets</a></li>
+                <li><a href="/materials/funactivities" class="menu-item" data-category="Fun Activities">Fun Activities</a></li>
+                <li><a href="/materials">Download</a></li>
+                <li><a href="/login">Log In</a></li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <!-- Submenu that will be dynamically populated -->
+    <div id="submenu" class="submenu"></div>
+    <main>
+        <section class="content fade-in-scroll">
+            <ul class="horizontal-menu">
+                <li><a href="/materials/geometry" class="menu-item" data-category="geometry">Geometry</a></li>
+                <li><a href="/materials/arithmetic" class="menu-item" data-category="arithmetic">Arithmetic</a></li>
+                <li><a href="/materials/algebra" class="menu-item" data-category="algebra">Algebra</a></li>
+                <li><a href="/materials/advancedMathematics" class="menu-item" data-category="advancedMathematics">Advanced Mathematics</a></li>
+                <li><a href="/materials/worksheets" class="menu-item" data-category="worksheets">Worksheets</a></li>
+                <li><a href="/materials/funactivities" class="menu-item" data-category="funActivities">Fun Activities</a></li>
+                <li><a href="/materials">Download</a></li>
+            </ul>
+        </section>
+        
+        <section class="center-content fade-in-scroll">        
+            <h2>Welcome to MathGenieRK</h2>
+            <p>Dive into a world of mathematical wonders! Whether you're tackling algebra, unraveling the mysteries of calculus, or exploring shapes and patterns, MathGenieRK is your ultimate resource for all things math. Let's make learning math engaging and fun!</p>
+            <a href="#" class="btn">Get Started</a>
+        </section>
+
+        <section class="center-content">        
+            <h2>Textbook Solutions</h2>
+            <p>Discover step-by-step solutions to popular textbooks, including New Mathematics 1 to 4, General Mathematics by D. Rayner, Additional Mathematics, School Geometry, and more. Perfect for mastering concepts and acing your exams!</p>
+        </section>
+        
+        <section class="center-content">        
+            <h2>Q/P Solutions (General Mathematics)</h2>
+            <p>Unlock solutions to past questions and papers for Maths D, Maths B, and IGCSE General Mathematics. Boost your preparation with expertly solved problems.</p>
+        </section>
+
+        <section class="center-content">        
+            <h2>Q/P Solutions (Advance Mathematics)</h2>
+            <p>Conquer challenging questions and papers for Additional Mathematics and Pure Mathematics. Dive into detailed solutions designed to simplify even the toughest problems.</p>
+        </section>
+
+        <section class="center-content">        
+            <h2>Handouts (General Mathematics)</h2>
+            <p>Access a collection of handy guides and topic summaries for General Mathematics. Perfect for quick revision or clarifying tricky concepts.</p>
+        </section>
+
+        <section class="center-content">        
+            <h2>Handouts (Advance Mathematics)</h2>
+            <p>Explore focused handouts covering Advanced Mathematics topics. These curated materials are designed to help you excel in your studies</p>
+        </section>
+
+        <section class="center-content">        
+            <h2>Geometry</h2>
+            <p>Learn how to create precise geometric constructions like drawing circles, dividing angles, and constructing perpendicular lines. Our step-by-step examples make geometry easier than ever.</p>
+        </section>
+
+        <section class="center-content">        
+            <h2>Math Comics</h2>
+            <p>Enjoy a fun twist on mathematics with Math Comics! Browse two exciting sections:
+
+                A collection of hilarious math comics from the internet and newspapers.
+                Original comics from creative individuals—submit your own math comic strip and share your creativity!</p>
+        </section>
+
+        <section class="center-content">        
+            <h2>Math Riddles &amp; Puzzles</h2>
+            <p>Challenge yourself with intriguing math riddles and puzzles!
+
+                Explore puzzles from popular sources like the internet and newspapers.
+                Share your own riddles and puzzles—showcase your problem-solving creativity to the MathGenieRK community!</p>
+        </section>
+
+        <section class="center-content">        
+            <h2>Math Jokes:</h2>
+            <p>Laugh your way through math with our collection of lighthearted jokes:
+
+                Enjoy jokes sourced from the web and print media.
+                Share your own math jokes and spread the joy of learning with humor!</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MathGenieRK. All rights reserved.</p>
+    </footer>
+
+    <script src="/homePage/script.js"></script>
+</body>
+</html>

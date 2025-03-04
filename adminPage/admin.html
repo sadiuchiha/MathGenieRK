@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - MathGenieRK</title>
+    <link rel="stylesheet" href="/adminPage/admin.css">
+</head>
+
+<body>
+    <header>
+        <h1>Admin Panel - MathGenieRK</h1>
+        <a href="/home">Go to User Home Page</a>
+    </header>
+    <main>
+        <h2>User Management</h2>
+        <table id="userTable">
+            <!-- Dynamically populated with MySQL user data -->
+        </table>
+
+        <h2>Content Management</h2>
+        <div id="contentTables">
+            <!-- Dynamically populate each subject table with data and CRUD functionality -->
+        </div>
+        <button id="addContent" class="bright-button">Add New Content</button>
+    </main>
+
+    <div id="contentFormPopup" class="popup">
+        <div class="modal-content">
+            <span class="close-button" onclick="closePopup()">×</span>
+            <form id="contentForm" enctype="multipart/form-data" onsubmit="uploadPDF(event)">
+                <div class="form-field">
+                    <label for="filename">Filename:</label>
+                    <input type="text" name="filename" required>
+                </div>
+                <div class="form-field">
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" required>
+                </div>
+                <div class="form-field">
+                    <label for="chapter">Chapter:</label>
+                    <input type="text" name="chapter" required>
+                </div>
+                <div class="form-field">
+                    <label for="youtubeLink">Video Link:</label>
+                    <input type="text" name="youtubeLink">
+                </div>
+                <!-- Updated Description Field -->
+                <div class="form-field">
+                    <label for="description">Description:</label>
+                    <textarea type="text" name="description" rows="5" style="resize: vertical;"></textarea>
+                </div>
+                <div class="form-field">
+                    <label for="category">Category:</label>
+                    <select name="category">
+                        <option>Geometry</option>
+                        <option>Arithmetic</option>
+                        <option>Algebra</option>
+                        <option>Advanced Mathematics</option>
+                        <option>Worksheets</option>
+                        <option>FunActivities</option>
+                    </select>
+                </div>
+    
+                <div class="form-field">
+                    <label for="file">Select PDF File:</label>
+                    <input type="file" name="file" accept="application/pdf" required>
+                </div>
+    
+                <button type="submit" class="modal-confirm">Submit</button>
+                <button type="button" onclick="closePopup()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="editUserPopup" class="popup" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeEditUserPopup()">×</span>
+            <form id="editUserForm">
+                <div class="form-field"><label for="userId">First Name:</label><input type="text" name="userId" required
+                        readonly></div>
+                <div class="form-field"><label for="firstname">First Name:</label><input type="text" name="firstname"
+                        required></div>
+                <div class="form-field"><label for="lastname">Last Name:</label><input type="text" name="lastname"
+                        required></div>
+                <div class="form-field"><label for="username">Username:</label><input type="text" name="username"
+                        required></div>
+                <div class="form-field"><label for="email">Email:</label><input type="text" name="email" required></div>
+                <div class="form-field"><label for="password">Password:</label><input type="password" name="password"
+                        required></div>
+                <div class="form-field"><label for="country">Country:</label><input type="text" name="country" required>
+                </div>
+                <div class="form-field"><label for="user_type">User Type:</label><input type="text" name="user_type"
+                        required readonly></div>
+                <button type="submit">Update User</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="editContentPopup" class="popup" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeEditContentPopup()">×</span>
+            <form id="editContentForm" enctype="multipart/form-data">
+                <div class="form-field"><label for="contentId">Id:</label><input type="text" name="contentId"
+                        required readonly></div>
+                <div class="form-field"><label for="filename">Filename:</label><input type="text" name="filename"
+                        required></div>
+                <div class="form-field"><label for="title">Title:</label><input type="text" name="title"
+                    required></div>
+                <div class="form-field"><label for="chapter">Chapter:</label><input type="text" name="chapter" required>
+                </div>
+                <div class="form-field"><label for="youtubeLink">Video Link:</label><input type="text" name="youtubeLink">
+                </div>
+                <div class="form-field"><label for="description">Description:</label><textarea type="text" name="description" rows="5" style="resize: vertical;"></textarea>
+                </div>
+                <div class="form-field"><label for="category">Category:</label><select name="category">
+                        <option>Geometry</option>
+                        <option>Arithmetic</option>
+                        <option>Algebra</option>
+                        <option>Advanced Mathematics</option>
+                        <option>Worksheets</option>
+                        <option>FunActivities</option>
+                    </select></div>
+                <div class="form-field"><label for="file">Select PDF File:</label><input type="file" name="file"
+                        accept="application/pdf"></div>
+                <button type="submit">Update Content</button>
+                <button type="button" onclick="removeFile()">Remove File</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="quizFormPopup" class="popup">
+        <div class="modal-quiz">
+            <span class="close-button" onclick="closePopup()">×</span>
+            <form id="quizForm" enctype="multipart/form-data" onsubmit="uploadPDF(event)">
+
+                <div class="form-field"><label for="question">Question:</label><input type="text" name="question"
+                    required></div>
+                <div class="form-field"><label for="choice1">Choice 1:</label><input type="text" name="choice1" required>
+                </div>
+                <div class="form-field"><label for="choice2">Choice 2:</label><input type="text" name="choice2" required>
+                </div>
+                <div class="form-field"><label for="choice3">Choice 3:</label><input type="text" name="choice3" required>
+                </div>
+                <div class="form-field"><label for="choice4">Choice 4:</label><input type="text" name="choice4" required>
+                </div>
+                <div class="form-field"><label for="answer">Answer Detail:</label><input type="text" name="answer" required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="chapter">Chapter:</label>
+                    <input type="text" name="chapter" required>
+                </div>
+                <div class="form-field">
+                    <label for="category">Category:</label>
+                    <select name="category">
+                        <option>Geometry</option>
+                        <option>Arithmetic</option>
+                        <option>Algebra</option>
+                        <option>Advanced Mathematics</option>
+                        <option>Worksheets</option>
+                        <option>FunActivities</option>
+                    </select>
+                </div>
+    
+                <button type="submit" class="modal-confirm">Submit</button>
+                <button type="button" onclick="closePopup()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="editQuizPopup" class="popup" style="display: none;">
+        <div class="modal-quiz">
+            <span class="close-button" onclick="closeEditQuizPopup()">×</span>
+            <form id="editQuizForm" enctype="multipart/form-data">
+                <div class="form-field"><label for="quizId">Id:</label><input type="text" name="contentId"
+                        required readonly></div>
+                <div class="form-field"><label for="question">Question:</label><input type="text" name="question"
+                    required></div>
+                <div class="form-field"><label for="choice1">Choice 1:</label><input type="text" name="choice1" required>
+                </div>
+                <div class="form-field"><label for="choice2">Choice 2:</label><input type="text" name="choice2" required>
+                </div>
+                <div class="form-field"><label for="choice3">Choice 3:</label><input type="text" name="choice3" required>
+                </div>
+                <div class="form-field"><label for="choice4">Choice 4:</label><input type="text" name="choice4" required>
+                </div>
+                <div class="form-field"><label for="answer">Answer Detail:</label><input type="text" name="answer" required>
+                </div>
+                <div class="form-field"><label for="title">Title:</label><input type="text" name="title"
+                    required></div>
+                <div class="form-field"><label for="chapter">Chapter:</label><input type="text" name="chapter" required>
+                </div>
+                <div class="form-field"><label for="category">Category:</label><select name="category">
+                        <option>Geometry</option>
+                        <option>Arithmetic</option>
+                        <option>Algebra</option>
+                        <option>Advanced Mathematics</option>
+                        <option>Worksheets</option>
+                        <option>FunActivities</option>
+                    </select></div>
+                <button type="submit">Update Quiz</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="successPopup">
+        <button class="success-popup-close" onclick="closeSuccessPopup()">×</button>
+        <p>Content added successfully!</p>
+        <button onclick="closeSuccessPopup()">Close</button>
+    </div>
+
+    <div id="successQuizPopup">
+        <button class="success-popup-close" onclick="closeSuccessQuizPopup()">×</button>
+        <p>Quiz added successfully!</p>
+        <button onclick="closeSuccessQuizPopup()">Close</button>
+    </div>
+
+    <script src="/adminPage/admin.js"></script>
+</body>
+
+</html>

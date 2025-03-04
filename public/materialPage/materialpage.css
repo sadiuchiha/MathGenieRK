@@ -1,0 +1,543 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic Styles */
+body {
+    display: flex; /* Make body a flex container */
+    flex-direction: column; /* Arrange children vertically */
+    min-height: 100vh; /* Make sure body is at least full viewport height */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    grid-area: header;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #ecf0f1;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+}
+
+header p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.welcome-user {
+    font-size: 1rem;
+    color: #ecf0f1;
+    margin-left: auto; /* Aligns the hamburger to the far right */
+    gap: 5px;
+    display: flex;
+}
+.title-subpart {
+    font-size: 1rem;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 10%;
+}
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.hamburger div {
+    background-color: #ecf0f1;
+    height: 3px;
+    width: 30px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.open div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+aside.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #34495e;
+    color: #ecf0f1;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+aside.sidebar.open {
+    transform: translateX(0);
+}
+
+aside.sidebar .close-btn {
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.sidebar-menu {
+    margin-top: 50px;
+}
+
+.sidebar-menu h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu ul li {
+    margin: 1rem 0;
+}
+
+.sidebar-menu ul li a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 3px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.sidebar-menu ul li a:hover {
+    background-color: #2c3e50;
+    transform: scale(1.1);
+}
+
+/* Submenu positioning */
+.submenu {
+    position: absolute;
+    left: 0;  /* Align with the sidebar-menu */
+    top: 0;   /* Start right after the heading */
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    max-height: 100%; /* Occupy the full height of the sidebar */
+    overflow-y: auto; /* Allow scrolling if necessary */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    z-index: 10;
+}
+
+/* Submenu item styling */
+.submenu-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submenu-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Show submenu on hover */
+.sidebar-menu ul li:hover .submenu {
+    display: block;  /* Show submenu when hovering over the parent item */
+}
+
+/* Main content styles */
+main {
+   flex: 1; /* Allow main to grow and push the footer down */
+   margin: 20px;
+   margin-bottom: 20px;
+}
+
+.content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Horizontal menu styles */
+.horizontal-menu {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 1rem 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+
+.horizontal-menu li {
+    margin: 0 1rem;
+}
+
+.horizontal-menu li a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.horizontal-menu li a:hover::after {
+    transform: scaleX(1);
+}
+
+.horizontal-menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #3498db;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Footer Styles */
+footer {
+    grid-area: footer;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+}
+
+
+
+/* Button and Link Styles */
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(45deg, #2980b9, #3498db);
+}
+
+/* Advanced Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in-scroll {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-in-scroll.visible {
+    opacity: 1;
+}
+
+/* Centered Content Styles for the Specific Section */
+.center-content {
+    max-width: 700px; /* Slightly smaller for better alignment */
+    margin: 80px auto; /* Centers the section horizontally with margin from headings */
+    padding: 40px; /* Inner padding for the content */
+    text-align: center; /* Centers text within the section */
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adds smooth hover effects */
+}
+
+/* Amplified Heading and Paragraph Styles */
+.center-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem; /* Slightly larger heading size */
+    color: #2c3e50; /* Darker color for emphasis */
+    margin-bottom: 20px; /* Space between heading and paragraph */
+}
+
+.center-content p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem; /* Font size for the paragraph */
+    color: #34495e; /* Grayish tone for text */
+    margin-bottom: 30px; /* Space between the paragraph and button */
+    line-height: 1.8; /* Improves readability */
+}
+
+/* Enhanced Button Styles */
+.center-content .btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #1abc9c, #16a085); /* Greenish gradient */
+    color: #ffffff; /* White text */
+    padding: 12px 25px; /* Padding for button size */
+    font-size: 1rem; /* Font size for the button text */
+    text-decoration: none; /* Removes underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+}
+
+.center-content .btn:hover {
+    background: linear-gradient(45deg, #16a085, #1abc9c); /* Invert gradient on hover */
+    transform: scale(1.1); /* Button scales slightly on hover */
+}
+
+/* Hover Effects on Entire Section */
+.center-content:hover {
+    transform: translateY(-10px); /* Moves section up slightly when hovered */
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15); /* Increases shadow on hover */
+}
+.pdf-description-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%; /* Ensures the container width is fixed */
+    height: auto;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.pdf-description { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Ensure it fits within the parent container */
+    margin: 20px auto;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+    overflow-wrap: break-word; /* Ensures long words wrap */
+    word-break: break-word; /* Alternative for compatibility */
+    white-space: normal; /* Ensures wrapping to new lines */
+}
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Container occupies 80% of the parent width */
+    max-width: 960px; /* Added maximum width */
+    height: auto;  /*  Adjusts height based on content */
+    aspect-ratio: 16 / 9; /* Maintains the aspect ratio */
+    margin: 20px auto;
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.video-container iframe {
+     width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #f9f9f9;
+    border: none; /*remove the default border*/
+}
+
+
+.pdf-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Container occupies 80% of the parent width */
+    max-width: 960px; /* Added maximum width */
+     height: auto; /* Container will grow with the content*/
+    margin: 20px auto;
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.pdf-loader iframe {
+    width: 100%; /*iframe occupies the total width of its parent*/
+     height: 600px; /*  Sets a fixed height for PDF */
+    border: none; /*remove the default border*/
+}
+
+#loader-label {
+    font-family: 'Roboto', sans-serif;
+    color: #666;
+    font-size: 18px;
+}
+
+.table-container {
+    max-width: 80%;
+    margin: 20px auto;
+    overflow-x: auto;
+}
+
+.content-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+}
+
+.content-table th,
+.content-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.content-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.content-table tbody tr:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .center-content {
+        padding: 20px; /* Reduces padding on smaller screens */
+        margin: 50px auto; /* Adjusts margin for smaller screens */
+    }
+
+    .center-content h2 {
+        font-size: 2.2rem; /* Adjusts heading size on smaller screens */
+    }
+
+    .center-content p {
+        font-size: 1rem; /* Adjusts paragraph font size */
+    }
+
+    .center-content .btn {
+        padding: 10px 20px; /* Adjusts button padding */
+        font-size: 0.9rem; /* Adjusts button font size */
+    }
+}
+
+/* Existing CSS (from previous messages) */
+.pdf-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 960px;
+     height: auto;
+    margin: 20px auto;
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.pdf-loader iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+}
+
+/* new CSS added below*/
+.pdf-loader #fullscreen-button{
+   padding: 10px 15px;
+   margin: 10px 0px;
+   background-color: #3498db;
+   color:#fff;
+   border-radius:5px;
+   cursor:pointer;
+}
+
+.pdf-loader #fullscreen-button:hover{
+  background-color: #2980b9;
+}
+
+.pdf-loader.has-pdf #fullscreen-button{
+   display: block; /*display button if has-pdf class*/
+}
+
+.contact-form-section {
+    width: 80%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-container h2{
+    text-align: center;
+    margin-bottom: 20px;
+     font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #2c3e50; /* Darker color for emphasis */
+}
+
+.contact-form-container .form-group{
+    margin-bottom:15px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.contact-form-container .form-group label {
+    margin-bottom: 5px;
+     font-family: 'Roboto', sans-serif;
+}
+
+.contact-form-container .form-group input,
+.contact-form-container .form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.contact-form-container .success-message {
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 5px;
+    margin-top: 20px;
+     font-family: 'Roboto', sans-serif;
+    text-align:center;
+}
